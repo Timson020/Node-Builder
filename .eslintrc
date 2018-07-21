@@ -4,9 +4,7 @@
 		"es6": true,
 		"node": true,
 	},
-	"globals": {
-		"global": true,
-	},
+	"globals": {},
 	"parserOptions": {
 		"ecmaVersion": 6,
 		"ecmaFeatures": {
