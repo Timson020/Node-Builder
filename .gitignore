@@ -1,0 +1,10 @@
+# node
+/node_modules/
+package-lock.json
+yarn.lock
+
+# build
+/dist
+
+# osx
+.DS_Store

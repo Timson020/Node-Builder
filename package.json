@@ -1,0 +1,36 @@
+{
+  "name": "Node-Builder",
+  "version": "1.0.0",
+  "description": "快速搭建Node服务",
+  "main": "index.js",
+  "scripts": {
+    "dev": ""
+  },
+  "dependencies": {
+    "express": "4.16.3"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.3",
+    "babel-eslint": "8.2.6",
+    "babel-loader": "7.1.5",
+    "eslint": "5.1.0",
+    "webpack": "4.16.1",
+    "webpack-cli": "3.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Timson020/Node-Builder.git"
+  },
+  "keywords": [
+    "webpack",
+    "node",
+    "express",
+    "builder"
+  ],
+  "author": "Timson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Timson020/Node-Builder/issues"
+  },
+  "homepage": "https://github.com/Timson020/Node-Builder#readme"
+}
