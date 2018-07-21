@@ -8,20 +8,17 @@ import { Constants } from '../common'
 const dateFormat = () => moment().format('YYYY-MM-DD HH:mm:ss')
 
 const consoleTransport = new winston.transports.Console({
-	timestamp: dateFormat,
-	colorize: true,
+	level: 'info',
+	exitOnError: true,
 })
 
 const allTransport = new DailyRotateFile({
-	name: 'all',
-	filename: path.join(__dirname, '../logs/request.log'),
-	datePattern: 'yyyy-MM-dd-',
-	prepend: true,
-	level: 'info',
-	timestamp: dateFormat,
-	handleExceptions: true,
-	humanReadableUnhandledException: true,
-	json: false,
+	dirname: path.join(__dirname, '../logs'),
+	filename: 'request-%DATE%.log',
+	datePattern: 'YYYY-MM-DD HH-mm-ss',
+	zippedArchive: false,
+	maxSize: '1g',
+	maxFiles: '1d',
 })
 
 const transports = [allTransport]
@@ -37,6 +34,12 @@ const Logger = winston.createLogger({
 })
 
 export default function log(req, res, next) {
-	Logger.info(`---Started: ${req.method}, ${req.url}, ${req.ip}, ${req.body}`)
+	const t = new Date()
+	Logger.info(`---Started: time = ${dateFormat()}, method = ${req.method}, url = ${req.url}, ip = ${req.ip}, body = ${req.body}`)
+	res.on('finish', () => {
+		const duration = new Date() - t
+		const code = res.statusCode.toString()
+		Logger[code.substr(0, 1) <= 3 ? 'info' : 'error'](`---Completed: time = ${dateFormat()}, statusCode = ${res.statusCode}, duration = ${duration}ms`)
+	})
 	next()
 }
