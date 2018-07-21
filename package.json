@@ -11,6 +11,7 @@
     "release": "cross-env NODE_ENV=development webpack --hide-modules"
   },
   "dependencies": {
+    "crypto-js": "3.1.9-1",
     "express": "4.16.3",
     "moment": "2.22.2",
     "winston": "3.0.0",
