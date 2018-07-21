@@ -8,3 +8,7 @@ yarn.lock
 
 # osx
 .DS_Store
+
+# release
+*.log
+logs
