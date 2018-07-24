@@ -2,6 +2,7 @@ export default {
 	// 版本号
 	version: '1.0.0',
 
+	// log-string
 	serverStart: '----Start: ',
 	serverMiddleWare: '----Middle: ',
 	serverEnd: '----End: ',

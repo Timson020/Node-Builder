@@ -24,6 +24,9 @@ export default class App {
 		this.app.use(ApiMethod)
 		this.app.use(Logs)
 		this.app.use(Auth)
+		this.app.use('/api/*', (req, res) => {
+			res.api({ code: 99, msg: '暂无此服务', data: '' }, 200)
+		})
 	}
 
 	setStatic() {
