@@ -12,7 +12,7 @@ export default function auth(req, res, next) {
 	res.t_log.info(`${Constants.serverMiddleWare}time = ${res.t_dateFormat()}, header = ${JSON.stringify(headers)}`)
 	
 	// 版本号是否一致
-	if (!headers.version || Constants.version != headers.version) return res.api({ code: 400, msg: '认证失败', data: '' }, 200)
+	if (!headers.version || (headers.version && Constants.version != headers.version)) return res.api({ code: 400, msg: '认证失败', data: '' }, 200)
 
 	// 放行
 	next()
