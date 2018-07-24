@@ -12,6 +12,7 @@ export default function auth(req, res, next) {
 	
 	// 版本号是否一致
 	if (isVersion) return res.api({ code: 400, msg: '认证失败', data: '' }, 200)
+	
 	// 放行
 	next()
 }
