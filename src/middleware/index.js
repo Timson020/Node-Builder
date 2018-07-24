@@ -1,5 +1,9 @@
-import Log from './Log'
+import Logs from './Logs'
+import Auth from './Auth'
+import ApiMethod from './ApiMethod'
 
 export {
-	Log,
+	Logs,
+	Auth,
+	ApiMethod,
 }

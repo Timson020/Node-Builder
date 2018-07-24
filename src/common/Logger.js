@@ -1,11 +1,8 @@
 import path from 'path'
 import winston from 'winston'
 import DailyRotateFile from 'winston-daily-rotate-file'
-import moment from 'moment'
 
-import { Constants } from '../common'
-
-const dateFormat = () => moment().format('YYYY-MM-DD HH:mm:ss')
+import Constants from './Constants'
 
 const consoleTransport = new winston.transports.Console({
 	level: 'info',
@@ -33,13 +30,4 @@ const Logger = winston.createLogger({
 	format,
 })
 
-export default function log(req, res, next) {
-	const t = new Date()
-	Logger.info(`---Started: time = ${dateFormat()}, method = ${req.method}, url = ${req.url}, ip = ${req.ip}, body = ${req.body}`)
-	res.on('finish', () => {
-		const duration = new Date() - t
-		const code = res.statusCode.toString()
-		Logger[code.substr(0, 1) <= 3 ? 'info' : 'error'](`---Completed: time = ${dateFormat()}, statusCode = ${res.statusCode}, duration = ${duration}ms`)
-	})
-	next()
-}
+export default Logger
