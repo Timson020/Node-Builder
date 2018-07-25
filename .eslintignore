@@ -1,8 +1,9 @@
 # config
-
 webpack.config.js
 
 
 # release
-
 dist
+
+# views
+views

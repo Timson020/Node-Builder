@@ -43,7 +43,7 @@ export default class App {
 
 	// 部署服务静态资源文件路径
 	setStatic() {
-		this.app.use(Express.static(__dirname + '../static'))
+		this.app.use(Express.static(path.resolve(__dirname, '../static')))
 	}
 
 	// 设置API错误返回
@@ -55,8 +55,9 @@ export default class App {
 
 	// 设置错误路由返回页面
 	setPageError() {
-		this.app.use('*', (req, res) => {
-			res.render('404' || '50x')
+		this.app.use((req, res) => {
+			res.status(404)
+			res.render('404', { url: req.url })
 		})
 	}
 }
