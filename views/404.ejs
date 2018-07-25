@@ -6,8 +6,27 @@
 		<title>404</title>
 		<link rel="stylesheet" type="text/css" href="/src/css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="/src/css/global.css" />
+		<link rel="stylesheet" type="text/css" href="/src/css/404.css">
 	</head>
-	<body>
-		<h3><%- url -%></h3>
+	<body id="fullScreen">
+		<img class="rotating" src="/src/images/spaceman.svg" />
+    <div class="pagenotfound-text">
+    <h1>页面搭飞船走了</h1>
+    <h2><a id="back">点击返回上一页</a></h2>
+    </div>
+    <canvas id="canvas2d"></canvas>
 	</body>
+	<script type="text/javascript" src="/src/js/spaceman.js"></script>
+	<script type="text/javascript">
+		// Kick off!
+		var starField = new StarField('fullScreen').render(333, 3)
+
+		var back = document.getElementById('back')
+		
+		back.addEventListener('click', backClick)
+
+		function backClick() {
+			history.back()			
+		}
+	</script>
 </html>
