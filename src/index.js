@@ -1,11 +1,13 @@
 import Express from 'express'
 import path from 'path'
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 
 // import { Utils, Constants } from './common'
 import { Logs, Auth, ApiMethod } from './middleware'
 import api from './api'
 import config from './config'
+import db from './model'
 
 export default class App {
 	// 构建函数
@@ -29,8 +31,12 @@ export default class App {
 
 	// 设置服务中间件
 	setMiddleware() {
+		// cookie 解析器
+		this.app.use(cookieParser())
+		// body 解析器
 		this.app.use(bodyParser.urlencoded({ extended: true }))
 		this.app.use(bodyParser.json())
+		// 自定义中间件
 		this.app.use(ApiMethod)
 		this.app.use(Logs)
 		this.app.use(Auth)

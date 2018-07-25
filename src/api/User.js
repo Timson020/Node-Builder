@@ -1,3 +1,5 @@
+// import User from '../model/User'
+
 const apis = {}
 
 apis.getuserinfo = function (req, res, next) {
