@@ -4,7 +4,8 @@ import { Constants, Logger } from '../common'
 
 // 返回方法
 function apiMethod(data = '', code) {
-	this.t_log.info(`${Constants.serverMiddleWare}time = ${this.t_dateFormat()}, during = ${new Date() - this.t_time}ms`)
+	const c = code.toString()
+	this.t_log[c.substr(0, 1) <= 3 ? 'info' : 'error'](`${Constants.serverMiddleWare}time = ${this.t_dateFormat()}, during = ${new Date() - this.t_time}ms, response = ${code == 200 ? JSON.stringify(data) : data}`)
 	const result = code === 200 ? data : { message: data, code }
 	this.status(code).json(result).end()
 }

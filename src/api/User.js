@@ -1,30 +1,65 @@
-// import User from '../model/User'
+import UserSchema from '../model/User'
+import { User } from '../getter'
 
 const apis = {}
 
-apis.getuserinfo = function (req, res, next) {
+apis.findalluser = function (req, res) {
 	try {
-		res.api({ code: 1, msg: '', data: { username: 'timson', age: 20, sex: 2 } }, 200)
+		UserSchema.find({}, {}, (err, doc) => {
+			if (err) return res.api({ code: 2, msg: err.toString(), data: [] }, 200)
+			res.api({ code: 1, msg: '', data: doc }, 200)
+		})
 	} catch (err) {
-		next()
+		res.api(err.toString(), 500)
 	}
 }
 
-apis.updateuserinfo = function (req, res, next) {
+apis.adduser = function (req, res) {
 	const { username, age, sex } = req.body
 	try {
-		res.api({ code: 1, msg: '', data: { username: username || 'timson', age: age || 20, sex: sex || 2 } }, 200)
+		const user = new UserSchema({ username, age, sex })
+		user.save((err, doc) => {
+			if (err) return res.api({ code: 2, msg: err.toString(), data: { } }, 200)
+			res.api({ code: 1, msg: '', data: User.getuserinfo(doc) }, 200)
+		})
 	} catch (err) {
-		next()
+		res.api(err.toString(), 500)
 	}
-	
 }
 
-apis.deluserinfo = function (req, res, next) {
+apis.getuserinfo = function (req, res) {
+	const { id } = req.params
 	try {
-		res.api({ code: 1, msg: 'delte user success', data: {} }, 200)
+		UserSchema.findOne({ _id: id }, {}).exec((err, doc) => {
+			if (err) return res.api({ code: 2, msg: err.toString(), data: { } }, 200)
+			res.api({ code: 1, msg: '', data: User.getuserinfo(doc) }, 200)
+		})
 	} catch (err) {
-		next()
+		res.api(err.toString(), 500)
+	}
+}
+
+apis.updateuserinfo = function (req, res) {
+	const { id } = req.params
+	try {
+		UserSchema.findByIdAndUpdate(id, { $set: { update_at: Date(), ...req.body } }, (err, predoc) => {
+			if (err) res.api({ code: 2, msg: err.toString(), data: {} }, 200)
+			else res.api({ code: 1, msg: '', data: User.getuserinfo(Object.assign(predoc, req.body)), }, 200)
+		})
+	} catch (err) {
+		res.api(err.toString(), 500)
+	}
+}
+
+apis.deluserinfo = function (req, res) {
+	const { id } = req.params
+	try {
+		UserSchema.findByIdAndRemove(id, err => {
+			if (err) res.api({ code: 2, msg: err.toString(), data: {} }, 200)
+			else res.api({ code: 1, msg: '删除成功', data: {} }, 200)
+		})
+	} catch (err) {
+		res.api(err.toString(), 500)
 	}
 }
 

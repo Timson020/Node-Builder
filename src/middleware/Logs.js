@@ -2,7 +2,7 @@ import { Constants } from '../common'
 
 export default function log(req, res, next) {
 	// 打印 请求最开始的日志
-	res.t_log.info(`${Constants.serverStart}time = ${res.t_dateFormat()}, method = ${req.method}, url = ${req.url}, ip = ${req.ip}, body = ${JSON.stringify(req.body)}`)
+	res.t_log.info(`${Constants.serverStart}time = ${res.t_dateFormat()}, method = ${req.method}, url = ${req.url}, ip = ${req.ip}, params = ${JSON.stringify(req.params)}, body = ${JSON.stringify(req.body)}`)
 
 	// respond结束的监听事件
 	res.on('finish', () => {

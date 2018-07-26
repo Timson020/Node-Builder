@@ -3,9 +3,9 @@ export default {
 	port: '9000',
 
 	// 数据库地址
-	dbhost: 'mongodb://localhost',
+	dbhost: 'mongodb://test.com',
 	dbname: 'test',
-	dbport: '9001',
+	dbport: '90000',
 	dbuser: 'test',
-	dbauth: 'test'
+	dbauth: 'test',
 }
