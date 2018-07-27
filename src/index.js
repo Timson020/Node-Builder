@@ -7,8 +7,7 @@ import cookieParser from 'cookie-parser'
 import { Logs, Auth, ApiMethod } from './middleware'
 import api from './api'
 import config from './config'
-import { UserTasks } from './task'
-// import dbConnect from './model'
+import { UserTasks } from './schedule'
 
 export default class App {
 	// 构建函数
@@ -19,7 +18,6 @@ export default class App {
 	// 开启服务
 	startServer() {
 		this.app = new Express()
-		// dbConnect()
 		this.app.set('views', path.join(__dirname, '../views'))
 		this.app.set('view engine', 'ejs')
 		this.setStatic()
