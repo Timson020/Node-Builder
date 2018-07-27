@@ -14,5 +14,8 @@ router.delete('/user/:id', User.deluserinfo)
 
 // common
 router.post('/common/getcode', Common.getcode)
+router.get('/common/getkey/:key', Common.getkeyredis)
+router.post('/common/setkey', Common.setkeyredis)
+router.put('/common/setkey', Common.settimeoutredis)
 
 export default router

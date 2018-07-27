@@ -3,6 +3,7 @@ import { User } from '../getter'
 
 const apis = {}
 
+// 
 apis.findalluser = function (req, res) {
 	try {
 		UserSchema.find({}, {}, (err, doc) => {
@@ -14,6 +15,7 @@ apis.findalluser = function (req, res) {
 	}
 }
 
+// 
 apis.adduser = function (req, res) {
 	const { username, age, sex } = req.body
 	try {
@@ -27,6 +29,7 @@ apis.adduser = function (req, res) {
 	}
 }
 
+// 
 apis.getuserinfo = function (req, res) {
 	const { id } = req.params
 	try {
@@ -39,6 +42,7 @@ apis.getuserinfo = function (req, res) {
 	}
 }
 
+// 
 apis.updateuserinfo = function (req, res) {
 	const { id } = req.params
 	try {
@@ -51,6 +55,7 @@ apis.updateuserinfo = function (req, res) {
 	}
 }
 
+// 
 apis.deluserinfo = function (req, res) {
 	const { id } = req.params
 	try {

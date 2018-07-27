@@ -32,6 +32,7 @@ quickstart in node with express && ejs && mongodb
 |logs|日志文件|只有在npm run dev 的时候才会生成，不会上传到git|
 |middleware|个人定制化中间件函数库||
 |model|mongodb 数据的 collections结构（关系型数据库的开发者可以理解成表结构）||
+|redis|redis相关操作可以存放到里面||
 |schedule|定时任务|里面有简单的使用说明|
 
 ## Usage
