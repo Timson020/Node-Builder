@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser'
 import { Logs, Auth, ApiMethod } from './middleware'
 import api from './api'
 import config from './config'
+import { UserTasks } from './task'
 // import dbConnect from './model'
 
 export default class App {
@@ -26,6 +27,7 @@ export default class App {
 		this.setApi()
 		this.setApiError()
 		this.setPageError()
+		this.setTasks()
 		this.app.listen(config.port)
 		console.info(`server is on, port is ${config.port}`)
 	}
@@ -66,5 +68,10 @@ export default class App {
 			res.status(404)
 			res.render('404', { url: req.url })
 		})
+	}
+
+	// 设置定时任务
+	setTasks() {
+		UserTasks.getuserinfo()
 	}
 }
