@@ -1,4 +1,4 @@
-import Express from 'express'
+import express from 'express'
 import path from 'path'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
@@ -17,7 +17,7 @@ export default class App {
 
 	// 开启服务
 	startServer() {
-		this.app = new Express()
+		this.app = express()
 		this.app.set('views', path.join(__dirname, '../views'))
 		this.app.set('view engine', 'ejs')
 		this.setStatic()
