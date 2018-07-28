@@ -10,7 +10,7 @@ const consoleTransport = new winston.transports.Console({
 })
 
 const allTransport = new DailyRotateFile({
-	dirname: path.join(__dirname, '../logs'),
+	dirname: Constants.isDev ? path.join(__dirname, '../logs') : './logs',
 	filename: 'request-%DATE%.log',
 	// datePattern: 'YYYY-MM-DD HH-mm-ss',
 	datePattern: 'YYYY-MM-DD',

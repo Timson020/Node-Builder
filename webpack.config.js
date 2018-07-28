@@ -1,6 +1,7 @@
+const path = require('path')
 const webpack = require('webpack')
 
-const isDev = process.env.NODE_ENV === 'development',
+const isDev = process.env.NODE_ENV === 'development'
 
 // 默认配置
 const defaultconfig = {
@@ -24,16 +25,11 @@ const releaseconfig = {
 	output: {
 		path: path.resolve(__dirname, './dist'),
 		publicPath: './dist',
-		filename: 'src/js/[name].js?[hash]',
+		filename: '[name].js?[hash]',
 	},
 	node: {
-		__filename: "mock",
-		__dirname: "mock",
+		__dirname: false,
 		console: true,
-		global: true,
-		process: true,
-		Buffer: true,
-		setImmediate: true,
 	},
 	module: {
 		rules: [{

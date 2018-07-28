@@ -7,9 +7,9 @@
     "node": ">= 8.11.3"
   },
   "scripts": {
-    "init": "npm run cleanNode && babel-node ./tools/index.js",
+    "init": "npm run cleanNode && babel-node ./tools/init.js",
     "dev": "cross-env NODE_ENV=development babel-node ./index.js",
-    "release": "cross-env NODE_ENV=development webpack --hide-modules",
+    "release": "cross-env NODE_ENV=production webpack ---mode=production --progress --colors --profile --display-modules",
     "cleanNode": "rm -fr package-lock.json && rm -fr yarn.lock && rm -fr node_modules && npm i"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "crypto-js": "3.1.9-1",
     "ejs": "2.6.1",
     "express": "4.16.3",
+    "hiredis": "0.5.0",
     "moment": "2.22.2",
     "mongoose": "5.2.5",
     "node-schedule": "1.3.0",
