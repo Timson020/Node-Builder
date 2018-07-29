@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const _externals = require('externals-dependencies')
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -7,6 +8,7 @@ const isDev = process.env.NODE_ENV === 'development'
 const defaultconfig = {
 	target: 'node',
 	devtool: '#eval-source-map',
+	context: __dirname,
 	resolve: {
 		extensions: ['.js', '.json'],
 		alias: {
@@ -41,13 +43,19 @@ const releaseconfig = {
 		filename: '[name].js?[hash]',
 	},
 	node: {
-		__dirname: false,
 		console: true,
+		global: true,
+		process: true,
+		Buffer: true,
+		__filename: true,
+		__dirname: true,
+		setImmediate: true,
+		path: true
 	},
 	module: {
 		rules: [{
 			test: /\.js$/,
-			loader: 'babel-loader',
+			use: 'babel-loader',
 			exclude: /node_modules/,
 		}],
 	},
