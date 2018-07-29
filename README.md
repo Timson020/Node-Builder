@@ -1,3 +1,5 @@
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Timson020/Node-Builder.git/pulls)
+
 # Node-Builder
 快速搭建node + express + mongodb 服务
 
