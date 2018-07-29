@@ -13,14 +13,27 @@ const defaultconfig = {
 			'@': path.resolve(__dirname, './src')
 		}
 	},
+	stats: {
+		cached: true,
+		cachedAssets: false,
+		chunks: false,
+		chunkModules: false,
+		colors: true,
+		hash: true,
+		modules: false,
+		reasons: true,
+		timings: true,
+		version: true,
+	},
 }
 
 // 生产环境打包配置
 const releaseconfig = {
+	name: "server",
 	mode: 'production',
 	devtool: '',
 	entry: {
-		app: './index.js',
+		app: ['babel-polyfill', './index.js'],
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -44,6 +57,9 @@ const releaseconfig = {
 		// loder里面的配置
 		new webpack.LoaderOptionsPlugin({ minimize: true }),
 	],
+	performance: {
+		hints: false,
+	},
 }
 
 const config = Object.assign(defaultconfig, releaseconfig)

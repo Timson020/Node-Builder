@@ -13,6 +13,7 @@
     "cleanNode": "rm -fr package-lock.json && rm -fr yarn.lock && rm -fr node_modules && npm i"
   },
   "dependencies": {
+    "babel-polyfill": "6.26.0",
     "cookie-parser": "1.4.3",
     "crypto-js": "3.1.9-1",
     "ejs": "2.6.1",
