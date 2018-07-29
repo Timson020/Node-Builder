@@ -1,7 +1,12 @@
 {
-	"presets": ["env", "stage-3"],
+	"presets": [["env", {
+		"targets": {
+			"node": "current",
+			"modules": "commonjs",
+		},
+	}], "stage-3"],
 	"plugins": ["transform-async-to-generator", ["transform-runtime", {
 		"polyfill": false,
-		"regenerator": true
-	}]]
+		"regenerator": true,
+	}]],
 }
