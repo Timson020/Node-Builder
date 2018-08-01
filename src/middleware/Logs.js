@@ -2,13 +2,13 @@ import ActionsSchema from '../model/Actions'
 import { Constants } from '../common'
 
 export default function log(req, res, next) {
-	const { ip, url, method, headers, params, body: bodys } = req
+	const { ip, url, method, headers, params: urlparams, body: bodys } = req
 
 	const header = JSON.stringify(headers)
 
 	const body = JSON.stringify(bodys)
 
-	const params = JSON.stringify(params)
+	const params = JSON.stringify(urlparams)
 
 	const action = new ActionsSchema({ ip, url, method, header, body })
 	
