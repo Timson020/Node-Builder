@@ -1,7 +1,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Timson020/Node-Builder.git/pulls)
+![GitHub issues](https://img.shields.io/github/issues/Timson020/react-native-image-qrcode.svg)
 
 # Node-Builder
-快速搭建node + express + mongodb 服务
 
 quickstart in node with express && ejs && mongodb
 
@@ -43,7 +43,7 @@ quickstart in node with express && ejs && mongodb
 <!-- 下载 -->
 git clone https://github.com/Timson020/Node-Builder.git
 
-<!-- 初始化项目(未完成) -->
+<!-- 初始化项目 -->
 npm run init
 
 <!-- 本地运行开发环境 -->

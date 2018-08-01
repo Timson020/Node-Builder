@@ -1,5 +1,5 @@
 {
-  "name": "Node-Builder",
+  "name": "Node--Builder",
   "version": "1.0.0",
   "description": "simple start in express",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "node": ">= 8.11.3"
   },
   "scripts": {
-    "init": "npm run cleanNode && babel-node ./tools/init.js",
+  	"init": "rm -fr .git && npm run cleanNode && babel-node ./tools/init.js",
     "dev": "cross-env NODE_ENV=development babel-node ./index.js",
     "release": "cross-env NODE_ENV=production webpack ---mode=production",
     "release:performance": "cross-env NODE_ENV=production webpack ---mode=production --progress --colors --profile --display-modules",
@@ -36,6 +36,7 @@
     "cross-env": "5.2.0",
     "eslint": "5.1.0",
     "externals-dependencies": "1.0.4",
+    "prompt": "1.0.0",
     "webpack": "4.16.1",
     "webpack-cli": "3.1.0"
   },
