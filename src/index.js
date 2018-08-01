@@ -25,7 +25,7 @@ export default class App {
 		this.setStatic()
 		this.setMiddleware()
 		this.setApi()
-		this.setView()
+		this.app.use(this.setView)
 		this.setApiError()
 		this.setPageError()
 		this.setTasks()
@@ -88,15 +88,13 @@ export default class App {
 	}
 
 	// 设置ejs页面
-	setView() {
-		this.app.use((req, res, next) => {
-			// 首页判断
-			if (/^\/$/ig.test(req.path)) {
-				res.status(200)
-				return res.render('index', { title: 'welcome to express', list: [{ name: 'title1', description: 'description1' }, { name: 'title2', description: 'description2' }, { name: 'title3', description: 'description3' }] })	
-			}
-			next()
-		})
+	setView(req, res, next) {
+		// 首页判断
+		if (/^\/$/ig.test(req.path)) {
+			res.status(200)
+			return res.render('index', { title: 'welcome to express', list: [{ name: 'title1', description: 'description1' }, { name: 'title2', description: 'description2' }, { name: 'title3', description: 'description3' }] })	
+		}
+		next()
 	}
 
 	// 设置API错误返回

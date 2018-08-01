@@ -1,5 +1,5 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Timson020/Node-Builder.git/pulls)
-![GitHub issues](https://img.shields.io/github/issues/Timson020/react-native-image-qrcode.svg)
+![GitHub issues](https://img.shields.io/github/issues/Timson020/Node-Builder.svg)
 
 # Node-Builder
 
