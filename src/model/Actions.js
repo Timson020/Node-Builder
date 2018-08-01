@@ -11,4 +11,4 @@ const Schema = new mongoose.Schema({
 	create_at: { type: Date, default: Date() }, // 创建时间
 })
 
-export default mongoose.model('User', Schema)
+export default mongoose.model('Action', Schema)

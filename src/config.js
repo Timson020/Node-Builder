@@ -5,12 +5,12 @@ export default {
 	// database
 	dbhost: 'mongodb://test.com',
 	dbname: 'test',
-	dbport: '90000',
+	dbport: '9001',
 	dbuser: 'test',
 	dbauth: 'test',
 
 	// redis
 	redishost: 'test.com',
-	redisport: '90001',
+	redisport: '9002',
 	redisauth: 'test',
 }
