@@ -18,11 +18,14 @@ export default class App {
 	// 开启服务
 	startServer() {
 		this.app = express()
+		// 指定视图所在的位置
 		this.app.set('views', path.join(__dirname, '../views'))
+		// 注册模板引擎
 		this.app.set('view engine', 'ejs')
 		this.setStatic()
 		this.setMiddleware()
 		this.setApi()
+		this.setView()
 		this.setApiError()
 		this.setPageError()
 		this.setTasks()
@@ -82,6 +85,18 @@ export default class App {
 	// 部署服务静态资源文件路径
 	setStatic() {
 		this.app.use(express.static(path.resolve(__dirname, '../static')))
+	}
+
+	// 设置ejs页面
+	setView() {
+		this.app.use((req, res, next) => {
+			// 首页判断
+			if (/^\/$/ig.test(req.path)) {
+				res.status(200)
+				return res.render('index', { title: 'welcome to express', list: [{ name: 'title1', description: 'description1' }, { name: 'title2', description: 'description2' }, { name: 'title3', description: 'description3' }] })	
+			}
+			next()
+		})
 	}
 
 	// 设置API错误返回

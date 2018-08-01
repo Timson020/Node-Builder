@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>express</title>
+		<link rel="stylesheet" type="text/css" href="/src/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/src/css/global.css" />
+		<style type="text/css">
+			li {
+				margin-top: .8rem;
+				align-items: flex-end;
+			}
+			li span {
+				margin-right: 2rem;
+				font-size: 1.6rem;
+			}
+		</style>
+	</head>
+	<body class="fullScene flex">
+		<main class="flex-1" style="padding-left: 1rem">
+			<h1 style="text-align: left">
+				<%= title %>
+			</h1>
+			<% if (list.length) { %>
+				<ul>
+					<% list.map(function(it, i) { %>
+						<li class="flex">
+							<span style="margin-right: 2rem;"><%= it.name %></span>
+							<p><%= it.description %></p>
+						</li>
+					<% }) %>
+				</ul>
+			<% } %>
+		</main>
+	</body>
+</html>
