@@ -1,9 +1,8 @@
 import express from 'express'
-import path from 'path'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 
-// import { Utils, Constants } from './common'
+import { Constants } from './common'
 import { Logs, Auth, ApiMethod } from './middleware'
 import api from './api'
 import config from './config'
@@ -18,8 +17,11 @@ export default class App {
 	// 开启服务
 	startServer() {
 		this.app = express()
+
+		if (Constants.isDev) this.setDev()
+
 		// 指定视图所在的位置
-		this.app.set('views', path.join(__dirname, '../views'))
+		this.app.set('views', './views')
 		// 注册模板引擎
 		this.app.set('view engine', 'ejs')
 		this.setStatic()
@@ -29,7 +31,7 @@ export default class App {
 		this.setApiError()
 		this.setPageError()
 		this.setTasks()
-		this.app.listen(config.port)
+		!Constants.isDev ? this.app.listen(config.port) : null
 		console.info([
 			'                            _ooOoo_  ',
 			'                           o8888888o  ',
@@ -61,7 +63,7 @@ export default class App {
 			'                  别人笑我忒疯癫，我笑自己命太贱；  ',
 			'                  不见满街漂亮妹，哪个归得程序员？  ',
 		].join('\n'))
-		console.info(`server is on, port is ${config.port}`)
+		!Constants.isDev ? console.info(`isDev: ${Constants.isDev}, server is on, port is ${config.port}`) : null
 	}
 
 	// 设置服务中间件
@@ -84,7 +86,7 @@ export default class App {
 
 	// 部署服务静态资源文件路径
 	setStatic() {
-		this.app.use(express.static(path.resolve(__dirname, '../static')))
+		this.app.use(express.static('./static'))
 	}
 
 	// 设置ejs页面
@@ -115,5 +117,36 @@ export default class App {
 	// 设置定时任务
 	setTasks() {
 		UserTasks.getuserinfo()
+	}
+
+	// 开发环境设置
+	setDev() {
+		// const webpack = require('webpack')
+		// const webpackDevMiddleware = require('webpack-dev-middleware')
+		// const webpackHotMiddleware = require('webpack-hot-middleware')
+		// const http = require('http')
+		// const reload = require('reload')
+
+		// const webpackConfig = require('../config/webpack.development.config.js')
+
+		// const compiler = webpack(webpackConfig)
+		// const server = http.createServer(this.app)
+
+		// this.app.use(webpackDevMiddleware(compiler, {
+		// 	// public path should be the same with webpack config
+		// 	publicPath: webpackConfig.output.publicPath,
+		// 	noInfo: false,
+		// 	stats: {
+		// 		colors: true,
+		// 	},
+		// }))
+
+		// this.app.use(webpackHotMiddleware(compiler))
+		
+		// reload(this.app)
+		
+		// server.listen(config.port, function () {
+		// 	console.info(`App (dev) is now running on port ${config.port}`)
+		// })
 	}
 }

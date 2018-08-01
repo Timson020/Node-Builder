@@ -16,7 +16,7 @@ const config = {
 	},
 	// 输出文件
 	output: {
-		path: path.resolve(__dirname, '../dist'),
+		path: path.resolve(__dirname, '../dist/js'),
 		publicPath: '/dist',
 		filename: '[name].js?[hash]',
 	},
@@ -58,7 +58,7 @@ const config = {
 		path: true,
 	},
 	// 外部拓展
-	externals: plugin_externals(['dependencies']),
+	externals: plugin_externals(['dependencies', 'devDependencies']),
 	// 统计信息
 	stats: {
 		// 添加资源信息

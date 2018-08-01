@@ -5,6 +5,11 @@
 
 quickstart in node with express && ejs && mongodb
 
+## Feature
+
+- [X] ES6
+- [ ] Hot-Reload
+
 ## Root目录说明
 
 - src（项目源码）
