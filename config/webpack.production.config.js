@@ -1,9 +1,5 @@
 const path = require('path')
-// const webpack = require('webpack')
 const plugin_externals = require('externals-dependencies')
-
-// 是否开发环境
-const isDev = process.env.NODE_ENV === 'development'
 
 const config = {
 	// 配置名称
@@ -20,7 +16,7 @@ const config = {
 	},
 	// 输出文件
 	output: {
-		path: path.resolve(__dirname, './dist'),
+		path: path.resolve(__dirname, '../dist'),
 		publicPath: '/dist',
 		filename: '[name].js?[hash]',
 	},
