@@ -81,7 +81,7 @@ export default class App {
 
 	// 部署服务静态资源文件路径
 	setStatic() {
-		this.app.use(Express.static(path.resolve(__dirname, '../static')))
+		this.app.use(express.static(path.resolve(__dirname, '../static')))
 	}
 
 	// 设置API错误返回
