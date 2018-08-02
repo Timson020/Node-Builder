@@ -3,14 +3,14 @@ export default {
 	port: '9000',
 
 	// database
-	dbhost: 'mongodb://db.shockbrave.com',
+	dbhost: 'mongodb://test.com',
 	dbname: 'test',
-	dbport: '28023',
+	dbport: '9001',
 	dbuser: 'test',
 	dbauth: 'test',
 
 	// redis
-	redishost: 'db.shockbrave.com',
-	redisport: '8325',
-	redisauth: 'duvj#2390X/.$90<dlt',
+	redishost: 'test.com',
+	redisport: '90002',
+	redisauth: 'test',
 }
