@@ -13,7 +13,7 @@ const config = {
 	devtool: '',
 	// 入口文件
 	entry: {
-		app: ['babel-polyfill', './index.js'],
+		app: ['./index.js'],
 	},
 	// 输出文件
 	output: {

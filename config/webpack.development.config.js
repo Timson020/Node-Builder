@@ -1,4 +1,6 @@
 const path = require('path')
+const webpack = require('webpack')
+// const plugin_startserver = require('start-server-webpack-plugin')
 const plugin_externals = require('externals-dependencies')
 
 const config = {
@@ -12,7 +14,7 @@ const config = {
 	devtool: '',
 	// 入口文件
 	entry: {
-		app: ['babel-polyfill', './index.js'],
+		app: ['webpack/hot/poll?1000', './dev.js'],
 	},
 	// 输出文件
 	output: {
@@ -37,6 +39,10 @@ const config = {
 	},
 	// 插件
 	plugins: [
+		// new plugin_startserver(),
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NamedModulesPlugin(),
+		new webpack.NoEmitOnErrorsPlugin(),
 		// 插件中的全局变量 -- 4.x 可以弃用
 		// new webpack.DefinePlugin({ 'process.env': { NODE_ENV: 'production' } }),
 		// loder里面的配置 -- 4.x 可以弃用
@@ -78,10 +84,10 @@ const config = {
 		cachedAssets: true,
 
 		// 添加 children 信息
-		children: true,
+		children: false,
 
 		// 添加 chunk 信息（设置为 `false` 能允许较少的冗长输出）
-		chunks: true,
+		chunks: false,
 
 		// 将构建模块信息添加到 chunk 信息
 		chunkModules: true,
@@ -134,7 +140,7 @@ const config = {
 		maxModules: 15,
 
 		// 添加构建模块信息
-		modules: true,
+		modules: false,
 
 		// 按指定的字段，对模块进行排序
 		// 你可以使用 `!field` 来反转排序。默认是按照 `id` 排序。
@@ -153,7 +159,7 @@ const config = {
 		publicPath: true,
 
 		// 添加模块被引入的原因
-		reasons: true,
+		reasons: false,
 
 		// 添加模块的源码
 		source: true,
@@ -162,7 +168,7 @@ const config = {
 		timings: true,
 
 		// 显示哪个模块导出被用到
-		usedExports: true,
+		usedExports: false,
 
 		// 添加 webpack 版本信息
 		version: true,

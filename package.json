@@ -9,6 +9,7 @@
   "scripts": {
     "init": "rm -fr .git && npm run cleanNode && babel-node ./tools/init.js",
     "dev": "cross-env NODE_ENV=development babel-node ./index",
+    "test": "cross-env NODE_ENV=development webpack --watch --config ./config/webpack.development.config.js ---mode=development",
     "release": "cross-env NODE_ENV=production webpack --config ./config/webpack.production.config.js ---mode=production",
     "release:performance": "cross-env NODE_ENV=production webpack --config ./config/webpack.production.config.js ---mode=production --progress --colors --profile --display-modules",
     "cleanNode": "rm -fr package-lock.json && rm -fr yarn.lock && rm -fr node_modules && npm i"
