@@ -1,11 +1,9 @@
 import express from 'express'
 
-import App from './index'
+import app from './index'
 // import config from './src/config'
 
 const exp = express()
-
-const { app } = App
 
 console.info(module.hot ? '✅	Server-side HMR Enabled!' : '❌	Server-side HMR Not Supported.')
 

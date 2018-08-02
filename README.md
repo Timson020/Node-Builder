@@ -8,11 +8,12 @@ quickstart in node with express && ejs && mongodb
 ## Feature
 
 - [X] ES6
-- [ ] Hot-Reload
+- [X] Hot-Reload
 
 ## Root目录说明
 
 - src（项目源码）
+- config（webpack配置文件，开发环境，生产环境）
 - static（静态资源文件, css, js, lib）
 - views（ejs模版文件）
 - index.js（入口文件）
@@ -21,7 +22,6 @@ quickstart in node with express && ejs && mongodb
 - .editorconfig（编辑器配置）
 - .gitignore（git忽略配置）
 - .babelrc（语法解析配置）
-- webpack.config.js（webpack配置文件，打包）
 
 ## Src项目源码目录说明
 >文件夹统一使用小写

@@ -1,3 +1,3 @@
 import app from './src'
 
-export default new app()
+export default app
