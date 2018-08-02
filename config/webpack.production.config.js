@@ -1,5 +1,6 @@
 const path = require('path')
 const plugin_externals = require('externals-dependencies')
+const plugin_copywebpack = require('copy-webpack-plugin')
 
 const config = {
 	// 配置名称
@@ -37,6 +38,8 @@ const config = {
 	},
 	// 插件
 	plugins: [
+		// 复制静态内容
+		new plugin_copywebpack([{ from : './static', to: '../static' }, { from : './views', to: '../views' }]),
 		// 插件中的全局变量 -- 4.x 可以弃用
 		// new webpack.DefinePlugin({ 'process.env': { NODE_ENV: 'production' } }),
 		// loder里面的配置 -- 4.x 可以弃用
