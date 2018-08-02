@@ -11,6 +11,6 @@ export default {
 
 	// redis
 	redishost: 'test.com',
-	redisport: '90002',
-	redisauth: 'test',
+	redisport: '9002',
+	redisauth: 'duvj#2390X/.$90<dlt',
 }

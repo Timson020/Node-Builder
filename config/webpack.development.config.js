@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-// const plugin_startserver = require('start-server-webpack-plugin')
+const plugin_startserver = require('start-server-webpack-plugin')
 const plugin_externals = require('externals-dependencies')
 
 const config = {
@@ -39,7 +39,7 @@ const config = {
 	},
 	// 插件
 	plugins: [
-		// new plugin_startserver(),
+		new plugin_startserver(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin(),
 		new webpack.NoEmitOnErrorsPlugin(),
