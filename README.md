@@ -35,11 +35,12 @@ quickstart in node with express && ejs && mongodb
 |config.js|项目第三方的配置文件|存放的是mongodb，redis，或者是其他第三库的配置，一般都是帐号密码，地址，端口的配置|
 |api|API接口||
 |common|工具类文件夹||
+|dao|数据库相关的操作||
 |getter|取回数据的格式化函数||
 |logs|日志文件|只有在npm run dev 的时候才会生成，不会上传到git|
 |middleware|个人定制化中间件函数库||
 |model|mongodb 数据的 collections结构（关系型数据库的开发者可以理解成表结构）||
-|redis|redis相关操作可以存放到里面||
+|redis|redis相关操作可以存放到里面|这个对于中大型项目需要用到的，如果小型项目觉得多余可以自行修改|
 |schedule|定时任务|里面有简单的使用说明|
 
 ## Usage
@@ -58,6 +59,17 @@ npm run dev
 npm run release
 
 ```
+
+## CMD
+
+|命令|描述|
+|:--:|:--:|
+|npm run init|初始化项目|
+|npm run cleanNode|清除node_module，重新安装|
+|npm run dev|开发环境|
+|npm run release|打包生产环境|
+|npm run release:performance|打包生产环境，并且查看具体性能|
+
 
 ## Contributors
 小生不才!

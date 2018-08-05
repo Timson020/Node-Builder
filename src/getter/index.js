@@ -1,5 +1,5 @@
-import * as User from './User'
+import * as usergetter from './User'
 
 export {
-	User,
+	usergetter,
 }

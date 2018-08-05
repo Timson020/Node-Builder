@@ -1,70 +1,62 @@
-import UserSchema from '../model/User'
-import { User } from '../getter'
+import { userdao } from '../dao'
+import { usergetter } from '../getter'
 
 const apis = {}
 
 // 
-apis.findalluser = function (req, res) {
+apis.findalluser = async function (req, resp) {
 	try {
-		UserSchema.find({}, {}, (err, doc) => {
-			if (err) return res.api({ code: 2, msg: err.toString(), data: [] }, 200)
-			res.api({ code: 1, msg: '', data: doc }, 200)
-		})
+		const res = await userdao.findAllUsers()
+		resp.api(res, 200)
 	} catch (err) {
-		res.api(err.toString(), 500)
+		resp.api(err.toString(), 500)
 	}
 }
 
 // 
-apis.adduser = function (req, res) {
+apis.adduser = async function (req, resp) {
 	const { username, age, sex } = req.body
 	try {
-		const user = new UserSchema({ username, age, sex })
-		user.save((err, doc) => {
-			if (err) return res.api({ code: 2, msg: err.toString(), data: { } }, 200)
-			res.api({ code: 1, msg: '', data: User.getuserinfo(doc) }, 200)
-		})
+		const res = await userdao.addUser({ username, age, sex })
+		if (res.code == 1) res.data = usergetter.getUserInfo(res.data)
+		resp.api(res, 200)
 	} catch (err) {
-		res.api(err.toString(), 500)
+		resp.api(err.toString(), 500)
 	}
 }
 
 // 
-apis.getuserinfo = function (req, res) {
+apis.getuserinfo = async function (req, resp) {
 	const { id } = req.params
 	try {
-		UserSchema.findOne({ _id: id }, {}).exec((err, doc) => {
-			if (err) return res.api({ code: 2, msg: err.toString(), data: { } }, 200)
-			res.api({ code: 1, msg: '', data: User.getuserinfo(doc) }, 200)
-		})
+		const res = await userdao.getUserinfo(id)
+		if (res.code == 1) res.data = usergetter.getUserInfo(res.data)
+		resp.api(res, 200)
 	} catch (err) {
-		res.api(err.toString(), 500)
+		resp.api(err.toString(), 500)
 	}
 }
 
 // 
-apis.updateuserinfo = function (req, res) {
+apis.updateuserinfo = async function (req, resp) {
 	const { id } = req.params
 	try {
-		UserSchema.findByIdAndUpdate(id, { $set: { update_at: Date(), ...req.body } }, (err, predoc) => {
-			if (err) res.api({ code: 2, msg: err.toString(), data: {} }, 200)
-			else res.api({ code: 1, msg: '', data: User.getuserinfo(Object.assign(predoc, req.body)), }, 200)
-		})
+		const res = await userdao.updateUser(id, res.body)
+		if (res.code == 1) res.data = usergetter.getUserInfo(Object.assign(res.data, req.body))
+		resp.api(res, 200)
 	} catch (err) {
-		res.api(err.toString(), 500)
+		resp.api(err.toString(), 500)
 	}
 }
 
 // 
-apis.deluserinfo = function (req, res) {
+apis.deluserinfo = async function (req, resp) {
 	const { id } = req.params
 	try {
-		UserSchema.findByIdAndRemove(id, err => {
-			if (err) res.api({ code: 2, msg: err.toString(), data: {} }, 200)
-			else res.api({ code: 1, msg: '删除成功', data: {} }, 200)
-		})
+		const res = await userdao.delUser(id)
+		resp.api(res, 200)
 	} catch (err) {
-		res.api(err.toString(), 500)
+		resp.api(err.toString(), 500)
 	}
 }
 

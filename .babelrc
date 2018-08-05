@@ -3,5 +3,10 @@
 		"es2015",
 		{ "modules": false },
 	], "stage-3"],
-	"plugins": [],
+	"plugins": [
+		"transform-async-to-generator", ["transform-runtime", {
+			"polyfill": false,
+			"regenerator": true,
+		}],
+	],
 }
